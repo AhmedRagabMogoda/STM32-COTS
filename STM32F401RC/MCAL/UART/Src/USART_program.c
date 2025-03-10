@@ -116,7 +116,7 @@ uint8_t UART_u8Send(UART_Number_t Copy_UARTNumber,uint8_t *Data, uint32_t DataLe
 	return Local_u8ErrorState;
 }
 
-uint8_t UART_u8Receive(UART_Number_t Copy_UARTNumber,uint16_t *Data, uint32_t DataLength)
+uint8_t UART_u8Receive(UART_Number_t Copy_UARTNumber,uint8_t *Data, uint32_t DataLength)
 {
 	uint8_t Local_u8ErrorState = OK;
 	if(Data != NULL)

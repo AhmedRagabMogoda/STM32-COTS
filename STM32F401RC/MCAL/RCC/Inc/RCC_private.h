@@ -15,6 +15,9 @@ typedef enum{
 }CR_t;
 
 /***************** RCC Peripheral Definitions ***************************/
+
+#define TIMEOUT 2000UL
+
 #define TIME_FINISHED      0
 
 #define CR_MASK            1u

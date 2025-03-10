@@ -72,7 +72,7 @@ typedef struct{
 	UART_OverSampling_t OverSampling;       /* 16 or 8 times over sampling */
     UART_StopBit_t StopBits;                /* 0.5 or 1 or 1.5 or 2 stop bits */
     UART_HWFlowControl_t HW_FlowControl;    /* None, RTS, CTS, or RTS/CTS */
-    uint16_t BaudRate;                      /* Baud rate (e.g., 9600, 115200) */
+    uint32_t BaudRate;                      /* Baud rate (e.g., 9600, 115200) */
 }UART_Config_t;
 
 /*==========================================================================================*/
@@ -131,7 +131,7 @@ uint8_t UART_u8Send(UART_Number_t Copy_UARTNumber,uint8_t *Data, uint32_t DataLe
  * - NULL_PTR_ERR: Null pointer passed for configuration or data buffer.
  * - TIME_OUT: Operation timed out while waiting for RXNE flag.
  */
-uint8_t UART_u8Receive(UART_Number_t Copy_UARTNumber,uint16_t *Data, uint32_t DataLength);
+uint8_t UART_u8Receive(UART_Number_t Copy_UARTNumber,uint8_t *Data, uint32_t DataLength);
 
 /**
  * @brief Enables DMA mode for USART transmission.
