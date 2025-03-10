@@ -263,4 +263,4 @@ typedef struct{
 #define SPI3           ((SPI_RegDef_t*)SPI3_BASE_ADDRESS)
 #define SPI4           ((SPI_RegDef_t*)SPI4_BASE_ADDRESS)
 
-#endif //STM32F401XX_H
+#endif /* STM32F401XX_H */
