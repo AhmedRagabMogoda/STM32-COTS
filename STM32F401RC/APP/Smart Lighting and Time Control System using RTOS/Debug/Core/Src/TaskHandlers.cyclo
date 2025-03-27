@@ -1,0 +1,9 @@
+../Core/Src/TaskHandlers.c:23:6:MenuTask	6
+../Core/Src/TaskHandlers.c:60:6:CMDTask	2
+../Core/Src/TaskHandlers.c:74:13:proccessCMD	5
+../Core/Src/TaskHandlers.c:90:13:ExtractCommand	3
+../Core/Src/TaskHandlers.c:107:6:LedTask	7
+../Core/Src/TaskHandlers.c:160:6:RTCTask	23
+../Core/Src/TaskHandlers.c:302:9:u8GetNumber	3
+../Core/Src/TaskHandlers.c:320:6:PrintTask	1
+../Core/Src/TaskHandlers.c:332:6:HAL_UART_RxCpltCallback	4

@@ -1,0 +1,10 @@
+../Core/Src/LedEffect.c:12:6:LedEffectStop	2
+../Core/Src/LedEffect.c:21:6:LedEffectStart	1
+../Core/Src/LedEffect.c:27:6:LedEffectAction1	2
+../Core/Src/LedEffect.c:36:6:LedEffectAction2	2
+../Core/Src/LedEffect.c:50:6:LedEffectAction3	1
+../Core/Src/LedEffect.c:59:6:LedEffectAction4	1
+../Core/Src/LedEffect.c:68:6:LedControl	2
+../Core/Src/LedEffect.c:77:6:TurnOnEvenLed	1
+../Core/Src/LedEffect.c:85:6:TurnOnOddLed	1
+../Core/Src/LedEffect.c:94:6:LedEffectCallBackFun	5
