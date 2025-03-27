@@ -39,7 +39,6 @@
 
 /*****************  AHB2 Peripheral Base Addresses  *****************/
 
-
 /*****************  AHB3 Peripheral Base Addresses  *****************/
 
 
