@@ -112,7 +112,7 @@ uint8_t UART_u8Init(UART_Config_t *Copy_UARTConfig);
  * - NULL_PTR_ERR: Null pointer passed for configuration or data buffer.
  * - TIME_OUT: Operation timed out while waiting for TXE flag.
  */
-uint8_t UART_u8Send(UART_Number_t Copy_UARTNumber,uint8_t *Data, uint32_t DataLength);
+uint8_t UART_u8Send(UART_Config_t *Copy_UARTConfig,uint8_t *Data, uint32_t DataLength);
 
 /*
  * UART_u8Receive
@@ -131,7 +131,7 @@ uint8_t UART_u8Send(UART_Number_t Copy_UARTNumber,uint8_t *Data, uint32_t DataLe
  * - NULL_PTR_ERR: Null pointer passed for configuration or data buffer.
  * - TIME_OUT: Operation timed out while waiting for RXNE flag.
  */
-uint8_t UART_u8Receive(UART_Number_t Copy_UARTNumber,uint8_t *Data, uint32_t DataLength);
+uint8_t UART_u8Receive(UART_Config_t *Copy_UARTConfig,uint8_t *Data, uint32_t DataLength);
 
 /**
  * @brief Enables DMA mode for USART transmission.
@@ -144,7 +144,7 @@ uint8_t UART_u8Receive(UART_Number_t Copy_UARTNumber,uint8_t *Data, uint32_t Dat
  *
  * @return no
  */
-void UART_u8Send_DMA(UART_Number_t Copy_UARTNumber);
+uint8_t UART_u8Send_DMA(UART_Config_t *Copy_UARTConfig);
 
 /**
  * @brief Enables DMA mode for USART reception.
@@ -157,7 +157,7 @@ void UART_u8Send_DMA(UART_Number_t Copy_UARTNumber);
  *
  * @return no
  */
-void UART_u8Receive_DMA(UART_Number_t Copy_UARTNumber);
+uint8_t UART_u8Receive_DMA(UART_Config_t *Copy_UARTConfig);
 
 
 
