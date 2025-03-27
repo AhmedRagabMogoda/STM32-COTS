@@ -89,10 +89,10 @@ uint8_t UART_u8Init(UART_Config_t *Copy_UARTConfig)
 	return Local_u8ErrorState;
 }
 
-uint8_t UART_u8Send(UART_Number_t Copy_UARTNumber,uint8_t *Data, uint32_t DataLength)
+uint8_t UART_u8Send(UART_Config_t *Copy_UARTConfig,uint8_t *Data, uint32_t DataLength)
 {
 	uint8_t Local_u8ErrorState = OK;
-	if(Data!=NULL)
+	if(Data != NULL && Copy_UARTConfig != NULL)
 	{
 		uint32_t Time;
 		uint32_t Count;
@@ -100,13 +100,13 @@ uint8_t UART_u8Send(UART_Number_t Copy_UARTNumber,uint8_t *Data, uint32_t DataLe
 		{
 			Time = TIMEOUT;
 			/* Wait until Data register is empty */
-			while( !((USART[Copy_UARTNumber]->SR >> TXE_PIN_ACCESS) & ONE) && --Time);
+			while( !((USART[Copy_UARTConfig->UARTNumber]->SR >> TXE_PIN_ACCESS) & ONE) && --Time);
 			if (Time == TIME_FINISHED)
 			{
 				Local_u8ErrorState=TIME_OUT;
 				break;
 		    }
-			USART[Copy_UARTNumber]->DR = Data[Count];
+			USART[Copy_UARTConfig->UARTNumber]->DR = Data[Count];
 		}
 	}
 	else
@@ -116,10 +116,10 @@ uint8_t UART_u8Send(UART_Number_t Copy_UARTNumber,uint8_t *Data, uint32_t DataLe
 	return Local_u8ErrorState;
 }
 
-uint8_t UART_u8Receive(UART_Number_t Copy_UARTNumber,uint8_t *Data, uint32_t DataLength)
+uint8_t UART_u8Receive(UART_Config_t *Copy_UARTConfig,uint8_t *Data, uint32_t DataLength)
 {
 	uint8_t Local_u8ErrorState = OK;
-	if(Data != NULL)
+	if(Data != NULL && Copy_UARTConfig != NULL)
 	{
 		uint32_t Time;
 		uint32_t Count;
@@ -127,13 +127,13 @@ uint8_t UART_u8Receive(UART_Number_t Copy_UARTNumber,uint8_t *Data, uint32_t Dat
 		{
 			Time = TIMEOUT;
 			/* Wait until Data register is  not empty and Received data is ready */
-			while( !((USART[Copy_UARTNumber]->SR >> RXNE_PIN_ACCESS) & ONE) && --Time);
+			while( !((USART[Copy_UARTConfig->UARTNumber]->SR >> RXNE_PIN_ACCESS) & ONE) && --Time);
 			if (Time == TIME_FINISHED)
 			{
 				Local_u8ErrorState=TIME_OUT;
 				break;
 		    }
-			Data[Count] = USART[Copy_UARTNumber]->DR;
+			Data[Count] = USART[Copy_UARTConfig->UARTNumber]->DR;
 		}
 	}
 	else
@@ -143,16 +143,33 @@ uint8_t UART_u8Receive(UART_Number_t Copy_UARTNumber,uint8_t *Data, uint32_t Dat
 	return Local_u8ErrorState;
 }
 
-void UART_u8Send_DMA(UART_Number_t Copy_UARTNumber)
+uint8_t UART_u8Send_DMA(UART_Config_t *Copy_UARTConfig)
 {
-	/* Enable DMA for USART transmission */
-	USART[Copy_UARTNumber]->CR3 |= (DMAT_MASK << DMAT_PIN_ACCESS);
+	uint8_t Local_u8ErrorState = OK;
+	if(Copy_UARTConfig != NULL)
+	{
+		/* Enable DMA for USART transmission */
+		USART[Copy_UARTConfig->UARTNumber]->CR3 |= (DMAT_MASK << DMAT_PIN_ACCESS);
+	}
+	else
+	{
+		Local_u8ErrorState = NULL_PTR_ERR;
+	}
+	return Local_u8ErrorState;
 }
 
-void UART_u8Receive_DMA(UART_Number_t Copy_UARTNumber)
+uint8_t UART_u8Receive_DMA(UART_Config_t *Copy_UARTConfig)
 {
-	/* Enable DMA for USART Receive */
-	USART[Copy_UARTNumber]->CR3 |= (DMAR_MASK << DMAR_PIN_ACCESS);
-
+	uint8_t Local_u8ErrorState = OK;
+	if(Copy_UARTConfig != NULL)
+	{
+		/* Enable DMA for USART Receive */
+		USART[Copy_UARTConfig->UARTNumber]->CR3 |= (DMAR_MASK << DMAR_PIN_ACCESS);
+	}
+	else
+	{
+		Local_u8ErrorState = NULL_PTR_ERR;
+	}
+	return Local_u8ErrorState;
 }
 
