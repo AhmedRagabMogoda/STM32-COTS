@@ -33,6 +33,9 @@
 #define RCC_BASE_ADDRESS             0x40023800UL
 #define DMA1_BASE_ADDRESS            0x40026000UL
 #define DMA2_BASE_ADDRESS            0x40026400UL
+#define CRC_BASE                     0x40023000UL
+#define FLASH_REG_BASE                   0x40023C00UL
+
 
 /*****************  AHB2 Peripheral Base Addresses  *****************/
 
@@ -70,55 +73,55 @@ typedef double                  double64_t;
 
 /****************** RCC Register Definition Structure ***************/
 typedef struct {
-    volatile uint32_t CR;           // Clock Control Register
-    volatile uint32_t PLLCFGR;      // PLL Configuration Register
-    volatile uint32_t CFGR;         // Clock Configuration Register
-    volatile uint32_t CIR;          // Clock Interrupt Register
-    volatile uint32_t AHB1RSTR;     // AHB1 Peripheral Reset Register
-    volatile uint32_t AHB2RSTR;     // AHB2 Peripheral Reset Register
-    volatile uint32_t Reserved1;    // Reserved space
-    volatile uint32_t Reserved2;    // Reserved space
-    volatile uint32_t APB1RSTR;     // APB1 Peripheral Reset Register
-    volatile uint32_t APB2RSTR;     // APB2 Peripheral Reset Register
-    volatile uint32_t Reserved3;    // Reserved space
-    volatile uint32_t Reserved4;    // Reserved space
-    volatile uint32_t AHB1ENR;      // AHB1 Peripheral Clock Enable Register
-    volatile uint32_t AHB2ENR;      // AHB2 Peripheral Clock Enable Register
-    volatile uint32_t Reserved5;    // Reserved space
-    volatile uint32_t Reserved6;    // Reserved space
-    volatile uint32_t APB1ENR;      // APB1 Peripheral Clock Enable Register
-    volatile uint32_t APB2ENR;      // APB2 Peripheral Clock Enable Register
-    volatile uint32_t Reserved7;    // Reserved space
-    volatile uint32_t Reserved8;    // Reserved space
-    volatile uint32_t AHB1LPENR;    // AHB1 Low Power Enable Register
-    volatile uint32_t AHB2LPENR;    // AHB2 Low Power Enable Register
-    volatile uint32_t Reserved9;    // Reserved space
-    volatile uint32_t Reserved10;   // Reserved space
-    volatile uint32_t APB1LPENR;    // APB1 Low Power Enable Register
-    volatile uint32_t APB2LPENR;    // APB2 Low Power Enable Register
-    volatile uint32_t Reserved11;   // Reserved space
-    volatile uint32_t Reserved12;   // Reserved space
-    volatile uint32_t BDCR;         // Backup Domain Control Register
-    volatile uint32_t CSR;          // Clock Control & Status Register
-    volatile uint32_t Reserved13;   // Reserved space
-    volatile uint32_t Reserved14;   // Reserved space
-    volatile uint32_t SSCGR;        // Spread Spectrum Clock Generation Register
-    volatile uint32_t PLLI2SCFGR;   // PLLI2S Configuration Register
-    volatile uint32_t Reserved15;   // Reserved space
-    volatile uint32_t DCKCFGR;      // Dedicated Clocks Configuration Register
+    volatile uint32_t CR;           /* Clock Control Register                */
+    volatile uint32_t PLLCFGR;      /* PLL Configuration Register            */
+    volatile uint32_t CFGR;         /* Clock Configuration Register          */
+    volatile uint32_t CIR;          /* Clock Interrupt Register              */
+    volatile uint32_t AHB1RSTR;     /* AHB1 Peripheral Reset Register        */
+    volatile uint32_t AHB2RSTR;     /* AHB2 Peripheral Reset Register        */
+    volatile uint32_t Reserved1;    /* Reserved space                        */
+    volatile uint32_t Reserved2;    /* Reserved space                        */
+    volatile uint32_t APB1RSTR;     /* APB1 Peripheral Reset Register        */
+    volatile uint32_t APB2RSTR;     /* APB2 Peripheral Reset Register        */
+    volatile uint32_t Reserved3;    /* Reserved space                        */
+    volatile uint32_t Reserved4;    /* Reserved space                        */
+    volatile uint32_t AHB1ENR;      /* AHB1 Peripheral Clock Enable Register */
+    volatile uint32_t AHB2ENR;      /* AHB2 Peripheral Clock Enable Register */
+    volatile uint32_t Reserved5;    /* Reserved space                        */
+    volatile uint32_t Reserved6;    /* Reserved space                        */
+    volatile uint32_t APB1ENR;      /* APB1 Peripheral Clock Enable Register */
+    volatile uint32_t APB2ENR;      /* APB2 Peripheral Clock Enable Register */
+    volatile uint32_t Reserved7;    /* Reserved space                        */
+    volatile uint32_t Reserved8;    /* Reserved space                        */
+    volatile uint32_t AHB1LPENR;    /* AHB1 Low Power Enable Register        */
+    volatile uint32_t AHB2LPENR;    /* AHB2 Low Power Enable Register        */
+    volatile uint32_t Reserved9;    /* Reserved space                        */
+    volatile uint32_t Reserved10;   /* Reserved space                        */
+    volatile uint32_t APB1LPENR;    /* APB1 Low Power Enable Register        */
+    volatile uint32_t APB2LPENR;    /* APB2 Low Power Enable Register        */
+    volatile uint32_t Reserved11;   /* Reserved space                        */
+    volatile uint32_t Reserved12;   /* Reserved space                        */
+    volatile uint32_t BDCR;         /* Backup Domain Control Register        */
+    volatile uint32_t CSR;          /* Clock Control & Status Register       */
+    volatile uint32_t Reserved13;   /* Reserved space                        */
+    volatile uint32_t Reserved14;   /* Reserved space                        */
+    volatile uint32_t SSCGR;        /* Spread Spectrum Clock Generation Regiser */
+    volatile uint32_t PLLI2SCFGR;   /* PLLI2S Configuration Register         */
+    volatile uint32_t Reserved15;   /* Reserved space                        */
+    volatile uint32_t DCKCFGR;      /* Dedicated Clocks Configuration Register */
 } RCC_RegDef_t;
 
 /****************** GPIO Register Definition Structure ***************/
 typedef struct {
-    volatile uint32_t MODER;        // Mode Register
-    volatile uint32_t OTYPER;       // Output Type Register
-    volatile uint32_t OSPEEDR;      // Output Speed Register
-    volatile uint32_t PUPDR;        // Pull-Up/Pull-Down Register
-    volatile uint32_t IDR;          // Input Data Register
-    volatile uint32_t ODR;          // Output Data Register
-    volatile uint32_t BSRR;         // Bit Set/Reset Register
-    volatile uint32_t LCKr;         // Configuration Lock Register
-    volatile uint32_t AFR[2];       // Alternate Function Registers (Low and High)
+    volatile uint32_t MODER;        /* Mode Register                              */
+    volatile uint32_t OTYPER;       /* Output Type Register                       */
+    volatile uint32_t OSPEEDR;      /* Output Speed Register                      */
+    volatile uint32_t PUPDR;        /* Pull-Up/Pull-Down Register                 */
+    volatile uint32_t IDR;          /* Input Data Register                        */
+    volatile uint32_t ODR;          /* Output Data Register                       */
+    volatile uint32_t BSRR;         /* Bit Set/Reset Register                     */
+    volatile uint32_t LCKr;         /* Configuration Lock Register                */
+    volatile uint32_t AFR[2];       /* Alternate Function Registers (Low and High)*/
 } GPIO_RegDef_t;
 
 /****************** SysTick Register Definition Structure ***************/
@@ -221,6 +224,29 @@ typedef struct{
 	volatile uint32_t I2SCFGR;
 	volatile uint32_t I2SPR;
 }SPI_RegDef_t;
+
+/*****************  FLASH Peripheral Definition  ***************************/
+typedef struct{
+	volatile uint32_t ACR;      /*!< FLASH access control register, offset: 0x00 */
+	volatile uint32_t KEYR;     /*!< FLASH key register, offset: 0x04 */
+	volatile uint32_t OPTKEYR;  /*!< FLASH option key register, offset: 0x08 */
+	volatile uint32_t SR;       /*!< FLASH status register, offset: 0x0C */
+	volatile uint32_t CR;       /*!< FLASH control register, offset: 0x10 */
+	volatile uint32_t OPTCR;    /*!< FLASH option control register, offset: 0x14 */
+}FLASH_RegDef;
+
+/*****************  CRC Peripheral Definition  ***************************/
+typedef struct{
+    volatile uint32_t DR;   /* Data Register (CRC_DR) - Offset: 0x00 */
+    volatile uint32_t IDR;  /* Independent Data Register (CRC_IDR) - Offset: 0x04 */
+    volatile uint32_t CR;   /* Control Register (CRC_CR) - Offset: 0x08 */
+}CRC_RegDef_t;
+
+/*****************  CRC Peripheral Definition  ***************************/
+#define CRC           ((CRC_RegDef_t *)(CRC_BASE))
+
+/*****************  FLASH Peripheral Definition  ***************************/
+#define FLASH         ((FLASH_RegDef*)(FLASH_REG_BASE))
 
 /*****************  RCC Peripheral Definition  ***************************/
 #define RCC           ((RCC_RegDef_t*)(RCC_BASE_ADDRESS))
