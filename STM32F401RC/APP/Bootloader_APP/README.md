@@ -1,4 +1,4 @@
-# STM32 Bootloader for Secure Firmware Updates
+# STM32F4xx Bootloader for Secure Firmware Updates
 
 This project implements a robust **bootloader** for STM32 microcontrollers, enabling secure firmware updates via UART communication. The bootloader provides a structured command interface to facilitate remote firmware updates while ensuring data integrity using **CRC verification**.
 
