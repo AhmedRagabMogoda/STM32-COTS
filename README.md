@@ -85,7 +85,7 @@ Contains the primary application and hardware abstraction layers for the STM32F4
 
 ## 📁 STM32F103C8
 
-Disabled modules and example drivers for the STM32F103C8 MCU.
+Contains the primary application and hardware abstraction layers for the STM32F103C8 MCU.
 
 - **MCAL**
   - `CAN`: Controller Area Network peripheral driver.
